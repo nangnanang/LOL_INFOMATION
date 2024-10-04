@@ -28,12 +28,12 @@ export const fetchChampionList = async () => {
     }
   );
   if (!response.ok) {
-    return NextResponse.json({ error: "챔피언 데이터 오류" }, { status: 500 });
+    return { error: "챔피언 데이터 오류", result: null };
   }
   const { data } = await response.json();
   const championsData: Champion[] = Object.values(data);
 
-  return championsData;
+  return { error: null, result: championsData };
 };
 
 // 아이템 가져오기

@@ -12,7 +12,7 @@ const page = async () => {
       <p className="text-red-600 text-4xl font-bold mb-4">챔피언 목록</p>
       <Suspense fallback={<Loading />}>
         <div className="grid grid-cols-4 gap-4">
-          {data?.map((champion: Champion) => {
+          {data?.result?.map((champion: Champion) => {
             return (
               <ListCard
                 key={champion.key}
