@@ -1,5 +1,7 @@
+import Loading from "@/app/loading";
 import DetailCard from "@/components/DetailCard";
 import { fetchChampionDetail } from "@/utils/serverApi";
+import { Suspense } from "react";
 
 type Props = { params: { id: string } };
 export const generateMetadata = async ({ params }: Props) => {
@@ -21,7 +23,12 @@ const page = async ({ params }: Props) => {
       difficulty: data?.info.difficulty,
     },
   };
-  return <DetailCard data={propData} id={id} />;
+
+  return (
+    <Suspense fallback={<Loading />}>
+      <DetailCard data={propData} id={id} />;
+    </Suspense>
+  );
 };
 
 export default page;

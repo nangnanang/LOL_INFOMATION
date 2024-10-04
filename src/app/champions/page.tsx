@@ -1,30 +1,32 @@
-// import { Champion } from "@/types/Champion";
-
-import { headers } from "next/headers";
+import ListCard from "@/components/ListCard";
+import { Champion } from "@/types/Champion";
+import { fetchChampionList } from "@/utils/serverApi";
+import { Suspense } from "react";
+import Loading from "../loading";
 
 const page = async () => {
-  const host = headers().get("host");
-  console.log(host, "host");
-
-  // const response = await fetch(
-  //   "https://ddragon.leagueoflegends.com/cdn/14.19.1/data/ko_KR/champion.json"
-  // );
-  // const { data } = await response.json();
-  // const chams: Champion[] = Object.values(data);
-  const response = await fetch("http://localhost:3000/api/champions.route.ts");
-  // const data = response.json();
+  const data = await fetchChampionList();
 
   return (
-    <>
-      챔피언페이지입니다
-      {/* {champions.map((champion: Champion) => {
-        return (
-          <div key={champion.key}>
-            <p>{champion.name}</p>
-          </div>
-        );
-      })} */}
-    </>
+    <div className="w-full p-3">
+      <p className="text-red-600 text-4xl font-bold mb-4">챔피언 목록</p>
+      <Suspense fallback={<Loading />}>
+        <div className="grid grid-cols-4 gap-4">
+          {data?.map((champion: Champion) => {
+            return (
+              <ListCard
+                key={champion.key}
+                id={champion.id}
+                href={`/champions/${champion.id}`}
+                src={`https://ddragon.leagueoflegends.com/cdn/14.19.1/img/champion/${champion.id}.png`}
+                name={champion.name}
+                title={champion.title}
+              />
+            );
+          })}
+        </div>
+      </Suspense>
+    </div>
   );
 };
 
