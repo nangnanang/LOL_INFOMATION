@@ -10,7 +10,7 @@ const page = async () => {
       <p className="text-red-600 text-4xl font-bold mb-4">아이템 목록</p>
       <Suspense fallback={<Loading />}>
         <div className="grid grid-cols-6 gap-4">
-          {data?.map((item) => {
+          {data?.result?.map((item) => {
             return (
               <ListCard
                 key={item[0]}

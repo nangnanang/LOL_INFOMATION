@@ -9,7 +9,8 @@ export const generateMetadata = ({ params }: Props) => {
 
 const page = async ({ params }: Props) => {
   const id = params.id;
-  const data = await itemDetailGet(id);
+  const response = await itemDetailGet(id);
+  const data = response.result;
   return (
     <div className="flex flex-col gap-10">
       {data ? (

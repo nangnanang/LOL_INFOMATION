@@ -6,12 +6,13 @@ import { Suspense } from "react";
 type Props = { params: { id: string } };
 export const generateMetadata = async ({ params }: Props) => {
   const data = await fetchChampionDetail(params.id);
-  return { title: `${data ? data.name : "없음"}` };
+  return { title: `${data ? data.result?.name : "없음"}` };
 };
 
 const page = async ({ params }: Props) => {
   const id = params.id;
-  const data = await fetchChampionDetail(id);
+  const response = await fetchChampionDetail(id);
+  const data = response.result;
   const propData = {
     name: data?.name,
     title: data?.title,
