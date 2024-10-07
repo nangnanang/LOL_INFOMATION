@@ -29,7 +29,7 @@ const BWMode = () => {
         getMode();
       }}
     >
-      {mode === "dark" ? "라이트 모드" : "다크 모드"}
+      {mode === "light" ? "다크 모드" : "라이트 모드"}
     </button>
   );
 };

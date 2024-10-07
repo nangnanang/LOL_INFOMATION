@@ -13,10 +13,10 @@ export const GET = async () => {
     }
   );
   if (!response.ok) {
-    return NextResponse.json(
-      { error: "로테이션 데이터 오류" },
-      { status: 500 }
-    );
+    return NextResponse.json({
+      error: { message: "로테이션 데이터 오류" },
+      data: null,
+    });
   }
   const res = await response.json();
   const championData = await fetchChampionList();
@@ -26,5 +26,5 @@ export const GET = async () => {
   const rotationChampions = championData?.result?.filter((champion) => {
     return freeChampionIds.some((id) => String(id) === champion.key);
   });
-  return NextResponse.json({ data: rotationChampions });
+  return NextResponse.json({ error: null, data: rotationChampions });
 };

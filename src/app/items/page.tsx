@@ -4,13 +4,16 @@ import { Suspense } from "react";
 import Loading from "../loading";
 
 const page = async () => {
-  const data = await itemGet();
+  const response = await itemGet();
+  if (response.error) {
+    throw new Error(response.error);
+  }
   return (
     <div className="w-full p-3">
       <p className="text-red-600 text-4xl font-bold mb-4">아이템 목록</p>
       <Suspense fallback={<Loading />}>
-        <div className="grid grid-cols-6 gap-4">
-          {data?.result?.map((item) => {
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
+          {response.result?.map((item) => {
             return (
               <ListCard
                 key={item[0]}

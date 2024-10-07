@@ -21,7 +21,6 @@ export const fetchChampionList = async () => {
   const response = await fetch(
     `https://ddragon.leagueoflegends.com/cdn/${version.result}/data/ko_KR/champion.json`,
     {
-      headers: { "Content-Type": "application/json" },
       next: { revalidate: 86400 },
     }
   );
@@ -58,12 +57,14 @@ export const fetchChampionDetail = async (id: string) => {
   const response = await fetch(
     `https://ddragon.leagueoflegends.com/cdn/${version.result}/data/ko_KR/champion/${id}.json`,
     {
-      headers: { "Content-Type": "application/json" },
       cache: "no-store",
     }
   );
   if (!response.ok) {
-    return { error: "챔피언 디테일 데이터 오류", result: null };
+    return {
+      error: "챔피언 디테일 데이터 오류",
+      result: null,
+    };
   }
   const { data }: { data: ChampionDetailData } = await response.json();
 

@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 const Error = ({
   error,
   reset,
@@ -7,6 +9,7 @@ const Error = ({
   error: Error & { digest?: string };
   reset: () => void;
 }) => {
+  const router = useRouter();
   return (
     <div className="flex flex-col gap-5 items-center">
       <p className="text-xl text-red-500">{error.message}</p>
@@ -16,6 +19,12 @@ const Error = ({
         onClick={() => reset()}
       >
         새로고침
+      </button>
+      <button
+        className="p-3 text-xl border-solid border-2 rounded-xl  bg-red-500 dark:text-white border-black dark:border-white"
+        onClick={() => router.back()}
+      >
+        뒤로가기
       </button>
     </div>
   );

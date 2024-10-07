@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<br>
+롤API를 활용하여 Next.js와 typescript를 활용하여 롤 챔피언과 아이템 정보를 열람할 수 있는 사이트를 제작하였다. 
 
-## Getting Started
+기능
+-
 
-First, run the development server:
+-각 페이지로 넘어갈 수 있는 헤더 + 다크/라이트 모드
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+-챔피언 목록, 아이템 목록, 현재 로테이션 목록 페이지
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+-각 목록의 카드를 누르면 상세 페이지로 이동
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+배포
+-
 
-## Learn More
+[배포 링크]:https://lol-infomation-xsfb.vercel.app/
 
-To learn more about Next.js, take a look at the following resources:
+[배포 링크]
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<img src="https://github.com/user-attachments/assets/b05b4a9b-ad80-497c-aa08-b0164615bf28" alt="견본이미지"/>
+  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+트러블 슈팅
+-
 
-## Deploy on Vercel
+내 블로그 트러블 슈팅 게시글
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[트러블 슈팅]:https://fpzmfks.tistory.com/94
+[트러블 슈팅]
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+주의점
+-
+라이엇 API 키가 하루마다 갱신 되는 것이기 때문에 배포 링크는 거의 의미가 없습니다. 프로젝트를 확인하고 싶다면 git clone을 통해 프로젝트를 다운 받고 라이엇 API 키를 발급 받은 뒤 .env 파일에 환경 변수를 등록해주세요.

@@ -10,6 +10,9 @@ export const generateMetadata = async ({ params }: Props) => {
 const page = async ({ params }: Props) => {
   const id = params.id;
   const response = await fetchChampionDetail(id);
+  if (response.error) {
+    throw new Error(response.error);
+  }
   const data = response.result;
   const propData = {
     name: data?.name,
