@@ -26,7 +26,7 @@ const RotationList = () => {
       <p className="text-red-600 text-4xl font-bold mb-4">
         챔피언 로테이션 목록
       </p>
-      {rotation.length > 0 ? (
+      {rotation ? (
         <Suspense fallback={<Loading />}>
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
             {rotation.map((champion) => {
